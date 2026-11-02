@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Custom cursor — hide system cursor site-wide ────────────────────────── */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ── PathForge global page background ────────────────────────────────────── */
+.page-bg {
+  background: linear-gradient(135deg, #1A0B2E 0%, #0D1B3E 55%, #1A0B2E 100%);
+}
+/* Sticky nav: semi-transparent deep violet instead of pure black */
+.nav-bg {
+  background: rgba(13, 9, 30, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+/* Select/dropdown bg to match theme */
+.select-bg {
+  background: #130a24;
+}
+
+/* ── PathForge custom animations ──────────────────────────────────────────── */
+
+/* Smooth pulse for skeleton loaders */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.8s infinite linear;
+}
+
+/* Floating glow orbs (used as bg decoration) */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33%       { transform: translateY(-18px) translateX(8px); }
+  66%       { transform: translateY(8px) translateX(-12px); }
+}
+.animate-float-slow { animation: float-slow 12s ease-in-out infinite; }
+
+/* Task check bounce */
+@keyframes check-bounce {
+  0%   { transform: scale(0) rotate(-10deg); }
+  60%  { transform: scale(1.2) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.animate-check-bounce { animation: check-bounce 0.35s cubic-bezier(.46,.03,.52,.96) forwards; }
+
+/* Slide up reveal */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.4s ease-out forwards; }
+
+/* Progress bar fill */
+@keyframes fill-bar {
+  from { width: 0%; }
+}
+.animate-fill-bar { animation: fill-bar 1s cubic-bezier(.2,.7,.4,1) forwards; }
+
+/* Glow pulse on important elements */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+  50%       { box-shadow: 0 0 24px 2px rgba(139,92,246,0.18); }
+}
+.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* Noise texture overlay helper */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-title {
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 25%, #3b82f6 50%, #06b6d4 75%, #a855f7 100%);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animate-gradient-title:hover {
+  filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.45));
+}
+
+@keyframes underline-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+.section-title-underline::after {
+  content: '';
+  display: block;
+  margin-top: 4px;
+  height: 1.5px;
+  width: 100%;
+  background: linear-gradient(90deg, #a855f7, #3b82f6, #06b6d4);
+  border-radius: 9999px;
+  animation: underline-pulse 3s ease-in-out infinite;
+}

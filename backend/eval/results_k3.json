@@ -1,0 +1,18 @@
+{
+  "k": 3,
+  "n_queries": 20,
+  "results": {
+    "keyword (production fallback)": {
+      "hit@3": 1.0,
+      "recall@3": 0.9508,
+      "precision@3": 0.7667,
+      "mrr": 0.975
+    },
+    "tf-idf (offline baseline)": {
+      "hit@3": 1.0,
+      "recall@3": 0.9092,
+      "precision@3": 0.7333,
+      "mrr": 1.0
+    }
+  }
+}

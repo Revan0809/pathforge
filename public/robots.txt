@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /auth
+Allow: /privacy
+Allow: /terms
+
+# Keep authenticated pages private from crawlers
+Disallow: /dashboard
+Disallow: /onboarding
+Disallow: /roadmap
+Disallow: /dsa
+Disallow: /compass
+Disallow: /score
+Disallow: /cgpa
+Disallow: /courses
+Disallow: /friends
+Disallow: /challenges
+Disallow: /subjects
+Disallow: /company
+Disallow: /upgrade
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://pathforge.online/sitemap.xml
